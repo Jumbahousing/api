@@ -3,9 +3,9 @@ module.exports = (system)=>{
   const log = system.log;
   const Session = system.storage.sequelize.Session;
 
-  return (req,res,options={})=>{
+  return (req,res,options={shouldHave:{}})=>{
     let shouldBe = options.shouldBe || 'admin';
-    return req.shouldHave(options.shouldHave).
+    return req.shouldHave(options.shouldHave || {}).
     then(() => {
       req.forceResponseType = 'unAuthorized';
       let authID = req.headers['x-auth-id'];
@@ -26,14 +26,8 @@ module.exports = (system)=>{
         }
       }).
       then((user)=>{
-        if(shouldBe === 'admin' && user.isVrettaAdmin){
-          req.forceResponseType = false;
-          return user;
-        }else{
-          throw res.errors.unAuthorized({
-            isVrettaAdmin: user.isVrettaAdmin
-          },'NOT_ADMIN');
-        }
+        req.forceResponseType = false;
+        return user;
       });
     });
   };

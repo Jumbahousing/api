@@ -7,14 +7,8 @@ module.exports = (req, res, system) => {
 
 	return auth(req,res).
 	then(()=>
-		Listing.find({
-			where: {
-				id: {
-					gte: 0
-				}
-			}
-		})
-	)
+		Listing.findAll()
+	).
 	then((data) =>
 		res.response.success(data,'Good!')
 	);
