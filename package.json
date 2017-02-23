@@ -1,0 +1,18 @@
+{
+  "name": "simple-user-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ari-api": "file:ari-api-1.0.0.tgz",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "new": "node node_modules/ari-api/scripts/new.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
