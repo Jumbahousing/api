@@ -29,7 +29,7 @@ module.exports = function(req, res, system) {
 		}
 	}).
 	then(()=>
-		User.createUser(req.body)
+		User.create(req.body)
 	).
 	then((user)=>
 		res.response.success(user, 'Created User Successfully')
