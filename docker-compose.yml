@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mariadb:
+    image: "mariadb:10.1.21"
+    environment:
+      -  MYSQL_ROOT_PASSWORD=test
+      -  MYSQL_DATABASE=accounts
+    ports:
+      - "3306:3306"
+  api:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "1337:1337"
+    links:
+      - mariadb
