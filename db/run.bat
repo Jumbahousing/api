@@ -1,1 +1,1 @@
-docker run --name some-mariadb -v ./data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=test-d mariadb:10.1.21
+docker run --name db -e MYSQL_ROOT_PASSWORD=test -d mariadb:10.1.21 -p 3306:3306
